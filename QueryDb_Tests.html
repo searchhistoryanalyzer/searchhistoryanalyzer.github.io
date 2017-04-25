@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="QueryDb.js"></script>
+<script type="text/javascript" src="sample_json.js"></script>
+
+<script type="text/javascript">
+var db = new QueryDb();
+var event = sample_json.event;      // event is root node
+for(var i in event){
+    var e = event[i];
+    var date = new Date(+e.query.id[0].timestamp_usec/1000);
+    var query_text = e.query.query_text;
+    db.addQuery(new Query(query_text, date));
+}// for
+
+var it = db.wordIterator();
+var i = 0;
+var word_obj;
+while(it.hasNext()){
+    var n = it.next();
+    console.log(n.word+" "+n.getQueries().length);
+    if(i==5)
+        word_obj = n;
+    if(n.getDifferentDays()<6)
+        break;
+    i++;
+}
+
+console.log("Will remove:");
+console.log(word_obj.word);
+var queries = word_obj.getQueries();
+for(var i in queries){
+    console.log(queries[i].query);
+}
+
+db.removeWord(word_obj.word);
+
+var it = db.wordIterator();
+while(it.hasNext()){
+    var n = it.next();
+    console.log(n.word+" "+n.getQueries().length);
+    if(i==5)
+        word_obj = n;
+    if(n.getDifferentDays()<6)
+        break;
+    i++;
+}
+
+</script>
+
+</head>
+
+<body>
+
+
+</body>
+</html>

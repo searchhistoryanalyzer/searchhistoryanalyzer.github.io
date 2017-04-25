@@ -1,0 +1,19 @@
+.ResultsScreen{
+    border: 1px solid;
+}
+
+div.left{
+    float:left;
+    width:20em;
+    border: 1px solid;
+}
+
+.QueriesView{
+    display: none;
+    margin-left: 20em;
+    background-color: light-grey;
+}
+
+.QueriesView.show{
+    display: block;
+}

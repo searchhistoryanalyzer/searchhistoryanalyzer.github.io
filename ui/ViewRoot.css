@@ -1,0 +1,12 @@
+.ViewRoot{
+    position: relative;
+    border: 1px solid;
+}
+
+.screen{
+    display: none;
+}
+
+.screen.current{
+    display: block;
+}
