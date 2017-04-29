@@ -3,18 +3,40 @@ define_view("ui/WelcomeScreen", [], {
 	initialize: function(){
         // var self = this;
         // setTimeout(function(){self.debug_load_sample_data();}, 0);
+        this.$('.panel').on('drag dragstart dragend dragenter', function(evt) {
+          evt.preventDefault();
+          evt.stopPropagation();
+        });
 		this.render();
 	},
 	render: function(){
 	},
 	events:{
-        "change .choose": "on_choose_files",
+        "change .choose": function(evt){
+            this.on_choose_files(this.$('.choose')[0].files);
+        },
         "click .next": function(){
             this.trigger("next");
+        },
+        "drop .panel": function(evt){
+            evt.preventDefault();
+            evt.stopPropagation();
+            var files = evt.originalEvent.dataTransfer.files;
+            this.on_choose_files(files);
+        },
+        "dragover .panel": function(evt){
+            evt.preventDefault();
+            evt.stopPropagation();
+            this.$('.panel').addClass('dragover');
+        },
+        "dragleave .panel": function(evt){
+            evt.preventDefault();
+            evt.stopPropagation();
+            //if(evt.target == this.$('.panel')[0])
+            this.$('.panel').removeClass('dragover');
         }
 	},
-    on_choose_files: function(){
-        var files = this.$('.choose')[0].files;
+    on_choose_files: function(files){
         if(files.length==0)
             return;
         var self = this;

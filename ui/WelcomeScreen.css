@@ -2,3 +2,7 @@
     margin-top:15px;
     margin-bottom: 15px;
 }
+
+.panel.dragover{
+    border: 3px dashed maroon;    
+}
