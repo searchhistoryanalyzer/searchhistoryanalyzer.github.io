@@ -1,9 +1,20 @@
-<div class="screen WelcomeScreen">
-    <h1>Input Data</h1>
-
-    <p>This service lets you make your “mental portrait” by analyzing the history of your google searches over the years.</p>
-    <p>All data are processed locally - you never share it to our servers. Also you’ll be able to delete any undesired words from the results of analysis. But first, you need to complete a bit tricky procedure of retrieving the input data from Google.</p>
-    <p>To obtain the data, visit Google Takout page, select the “Search History” checkbox (and uncheck others), then download and unzip your archive.</p>
-    <p>To begin analysis, drag and drop desired JSON files from “Search History” folder to this window. Or use the button below:</p>
-    <input type="file" class="choose" multiple/>
+<div class="screen WelcomeScreen container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+            <div class="panel-body">
+                <h1 class="text-center">Input Data</h1>
+                <p>This service tries to create your <em>“mental portrait”</em> by <b>analyzing the history of your google searches</b> that you have accumulated over the years.</p>
+                <p>All data are processed <b>locally in your browser</b>, and you <em>never share it to our servers</em>.</p>
+                <p>Also you’ll be able to <b>delete</b> any undesired words from the results of analysis.</p>
+                <p><u>But first, you need to complete a bit tricky procedure of retrieving the input data from Google.</u></p>
+                <p><b>To obtain the data</b>, visit <a href="https://google.com/takeout" target="_blank">Google Takout</a> page, select the <b>“Search History”</b> checkbox (and unselect others), then download and unzip your archive.</p>
+            </div>
+            <div class="panel-footer">
+                <p>To begin analysis, drag and drop desired JSON files from “Search History” folder to this window <br/> or use the button below:</p>
+                <input type="file" class="choose" multiple/>
+            </div>
+            </div>
+        </div>
+    </div>
 </div>

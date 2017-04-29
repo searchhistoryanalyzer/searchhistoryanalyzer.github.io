@@ -1,19 +1,11 @@
-.ResultsScreen{
-    border: 1px solid;
+/*TODO: if applying class to this root element - it won't work - fix!*/
+.ResultsScreen.container{
+    max-width: 1000px;
 }
 
-div.left{
-    float:left;
-    width:20em;
-    border: 1px solid;
-}
-
-.QueriesView{
-    display: none;
-    margin-left: 20em;
-    background-color: light-grey;
-}
-
-.QueriesView.show{
-    display: block;
+/*margin fix*/
+.panel .row{
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top:10px;
 }

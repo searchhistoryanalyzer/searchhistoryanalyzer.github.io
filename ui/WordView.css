@@ -1,0 +1,12 @@
+button.word{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.WordView.current .word{
+    font-weight:bold;
+}
+
+.WordView.current{
+    text-decoration: underline;
+}

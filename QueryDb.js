@@ -65,7 +65,21 @@ QueryDb = function(){
         return w.replace(/[^a-zA-Zа-яА-Я0-9:\.іїє]/g,'');
     }
 
+    var remove_specials = function(text){
+        text = text.replace(/site:.*\s$/, "");
+        text = text.replace(/site:.*$/, "");
+        text = text.replace(/\w*url:.*\s$/, "");
+        text = text.replace(/\w*url:.*$/, "");
+        text = text.replace(/link:.*\s$/, "");
+        text = text.replace(/link:.*$/, "");
+        text = text.replace(/filetype:.*\s$/, "");
+        text = text.replace(/filetype:.*$/, "");        
+        return text;
+    }
+
     var split_query_text = function(text){
+        text = remove_specials(text);
+
         var arr = text.split(/[\s,.\\\/\|\[\]\(\)\!@#\$%\^&\*-+=:]/);
         var arr2 = [];
         for(i in arr){

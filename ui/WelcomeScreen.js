@@ -1,6 +1,8 @@
 define_view("ui/WelcomeScreen", [], {
     model: null,            // QueryDbModel
 	initialize: function(){
+        // var self = this;
+        // setTimeout(function(){self.debug_load_sample_data();}, 0);
 		this.render();
 	},
 	render: function(){
@@ -39,5 +41,16 @@ define_view("ui/WelcomeScreen", [], {
     		};// onload
     		fr.readAsText(file);
     	}//for files
+    },
+    debug_load_sample_data: function(){
+        var event = sample_json.event;
+        for(var i in event){
+            var e = event[i];
+            var date = new Date(+e.query.id[0].timestamp_usec/1000);
+            var query_text = e.query.query_text;
+            this.model.addQuery(new Query(query_text, date), {silent: true});
+        }// for
+        this.model.trigger("update");
+        this.trigger("choose");
     }
 });

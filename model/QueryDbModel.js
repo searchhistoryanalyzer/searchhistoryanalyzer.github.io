@@ -28,7 +28,7 @@ QueryDbModel = Backbone.Model.extend({
             while(it.hasNext()){
                 var w = it.next();
                 words.push(w);
-                if(++count>=100)
+                if(++count>=10)
                     break;
             }
             this.set('words', words);
