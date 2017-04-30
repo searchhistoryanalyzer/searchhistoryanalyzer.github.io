@@ -73,14 +73,14 @@ QueryDb = function(){
         text = text.replace(/link:.*\s$/, "");
         text = text.replace(/link:.*$/, "");
         text = text.replace(/filetype:.*\s$/, "");
-        text = text.replace(/filetype:.*$/, "");        
+        text = text.replace(/filetype:.*$/, "");
         return text;
     }
 
     var split_query_text = function(text){
         text = remove_specials(text);
 
-        var arr = text.split(/[\s,.\\\/\|\[\]\(\)\!@#\$%\^&\*-+=:]/);
+        var arr = text.split(/[\s,.\\\/\|\[\]\(\)\!@#\$%\^&\*-+=:\"\']/);
         var arr2 = [];
         for(i in arr){
             var w = normalize_word(arr[i]);

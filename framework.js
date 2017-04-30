@@ -78,6 +78,30 @@ add_css = function(name, css){
 
 }
 
+copy_attributes_from_to = function(from, to){
+    // copy general attributes
+    var attrs = from.attributes;
+    for(var i=0; i<from.attributes.length; i++){
+        var attr = attrs[i];
+        if(attr.name != 'class' && attr.name != 'style')
+            to.setAttribute(attr.name, attr.value);
+    }// for
+
+    // merge classes
+    var classes_from = from.classList;
+    var classes_to = to.classList;
+    for(var i=0; i<classes_from.length; i++){
+        classes_to.add(classes_from[i]);
+    }
+
+    // merge styles
+    var styles_from = from.style;
+    var styles_to = to.style;
+    for(var k in styles_from){
+        styles_to[k] = styles_from[k];
+    }
+}
+
 Backbone.View = Backbone.View.extend({
 		constructor:function(options){
 			// copied from Backbone
@@ -92,6 +116,7 @@ Backbone.View = Backbone.View.extend({
 				var html = $js_el.html();
 				var el = $(html);
                 // TODO: join here attributes and styles from original element - or warn about their removal!?
+                copy_attributes_from_to(this.el, el.filter('*')[0]);
 				this.$el.replaceWith(el);
 				this.setElement(el);
 			}
