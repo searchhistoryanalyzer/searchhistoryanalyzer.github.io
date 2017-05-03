@@ -21,17 +21,28 @@ QueryDbModel = Backbone.Model.extend({
             if(!options.silent)
                 this.trigger("update");
         },
+        removeWord: function(w, options){
+            var options = options || {};
+            this._query_db.removeWord(w);
+            if(!options.silent)
+                this.trigger("update");
+        },
         update: function(){
             var words = [];
             var it = this._query_db.wordIterator();
             var count = 0;
+            var found_current = false;
             while(it.hasNext()){
                 var w = it.next();
                 words.push(w);
+                if(w==this.get('current_word'))
+                    found_current = true;
                 if(++count>=10)
                     break;
             }
             this.set('words', words);
+            if(!found_current)
+                this.set('current_word', null);
         }
 });
 });// define

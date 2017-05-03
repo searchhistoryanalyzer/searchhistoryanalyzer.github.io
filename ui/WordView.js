@@ -11,7 +11,18 @@ define_view("ui/WordView", [], {
         this.$('.metadata').html(this.word.getDifferentDays()+' days '+this.word.getQueries().length+' queries');
 	},
 	events:{
-        "click": "on_click_word"
+        "click .word": "on_click_word",
+        "mouseover .btn-group": function(){
+            this.$('.btn-group>button').addClass('btn-default');
+            this.$('.btn-group>button').removeClass('btn-link');
+        },
+        "mouseout .btn-group": function(){
+            this.$('.btn-group>button').addClass('btn-link');
+            this.$('.btn-group>button').removeClass('btn-default');
+        },
+        "click #link-hide": "on_hide",
+        "click #link-delete": "on_delete",
+        "click #link-ignore": "on_ignore"
 	},
     setCurrent: function(flag){
         if(flag)
@@ -21,5 +32,17 @@ define_view("ui/WordView", [], {
     },
     on_click_word: function(){
         this.trigger("open", this);
+    },
+    on_hide: function(){
+        this.word.hidden = true;
+        // TODO add possibility to explicitly mark hacks like this (we were generally supposed to update from model after this)
+        this.$el.hide();
+        this.trigger('hide', this);
+    },
+    on_delete: function(){
+        this.trigger("delete", this);
+    },
+    on_ignore: function(){
+        this.trigger("ignore", this);
     }
 });

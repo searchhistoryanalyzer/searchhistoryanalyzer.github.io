@@ -21,8 +21,16 @@ define_view("ui/ResultsScreen", ["ui/WordView", "ui/QueriesView"], {
             view.on("open", function(view){
                 self.model.set('current_word', view.word);
             });
+            view.on("hide", function(view){
+                if(self.model.get('current_word')==view.word)
+                    self.model.set('current_word', null);
+            });
+            view.on("delete", function(view){
+                self.model.removeWord(view.word);
+            });
             $word_list.append(view.$el);
         }
+        this.render_queries();
 	},
     render_queries: function(){
         this.queries_view.clear();

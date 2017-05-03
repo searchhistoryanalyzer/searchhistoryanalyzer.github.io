@@ -121,21 +121,22 @@ QueryDb = function(){
         }// for
         sorted_words_ok = false;
     };
-    this.removeWord = function(str){
-        str = normalize_word(str);
-        var w = hashed_words[str];
+    this.removeWord = function(str_or_word){
+        var w;
+        if(str_or_word instanceof Word)
+            w = str_or_word;
+        else{
+            str = normalize_word(str);
+            w = hashed_words[str];
+        }
         if(!w)
             return;
         var queries = w.getQueries().slice();   // copy
         for(var i in queries){
             this.removeQuery(queries[i]);
         }// for
-        delete hashed_words[str];
+        delete hashed_words[w.word];
         sorted_words_ok = false;
-    };
-    this.hideWord = function(str){
-    };
-    this.unhideWord = function(str){
     };
     this.wordIterator = function(){
         bring_sorted_words();

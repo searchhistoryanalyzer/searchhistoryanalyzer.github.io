@@ -1,12 +1,29 @@
-button.word{
+.btn-group>button{
     padding-top: 0px;
     padding-bottom: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
 }
 
 .WordView.current .word{
     font-weight:bold;
 }
 
-.WordView.current{
+.WordView.current *{
     text-decoration: underline;
+}
+
+button.dropdown-toggle{
+    display: none;
+}
+
+.word{
+    margin-right: 1em;
+}
+
+.btn-group:hover button.dropdown-toggle{
+    display: block;
+}
+.btn-group:hover .word{
+    margin-right: 0px;
 }
