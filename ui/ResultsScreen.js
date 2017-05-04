@@ -70,9 +70,9 @@ define_view("ui/ResultsScreen", ["ui/WordView", "ui/QueriesView"], {
         var arr = [];
         for(var i in words){
             var w = words[i];
-            arr.push((+i+1)+'. "'+w.word +'" - '+w.getDifferentDays()+' days, '+w.getQueries().length+' queries');
+            arr.push((+i+1)+'. "'+w.word +'" - '+w.getDifferentDays()+' days, '+w.getQueries().length+' queries'+'<br/>');
         }
-        return "My top-10 internet searches:\n"+arr.join("\n");
+        return "My top-10 internet searches:<br/>\n"+arr.join("\n");
     },
     share_fb: function(evt){
         evt.preventDefault();
