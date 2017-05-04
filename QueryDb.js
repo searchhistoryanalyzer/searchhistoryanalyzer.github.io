@@ -143,18 +143,18 @@ QueryDb = function(){
         var it = new (function(){
             var i = 0;
             this.hasNext = function(){
-                var j = i+1;
+                var j = i;
                 while(j<sorted_words.length && sorted_words[j].hidden)
                     j++;
                 return j<sorted_words.length;
             };
             this.next = function(){
-                var j = i+1;
+                var j = i;
                 while(j<sorted_words.length && sorted_words[j].hidden)
                     j++;
                 assert(j<sorted_words.length);
                 var ret = sorted_words[j];
-                i = j
+                i = j+1;
                 return ret;
             };
         })();
