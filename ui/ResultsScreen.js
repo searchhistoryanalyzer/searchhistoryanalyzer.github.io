@@ -22,8 +22,10 @@ define_view("ui/ResultsScreen", ["ui/WordView", "ui/QueriesView"], {
                 self.model.set('current_word', view.word);
             });
             view.on("hide", function(view){
-                if(self.model.get('current_word')==view.word)
-                    self.model.set('current_word', null);
+                view.word.hidden = true;
+                self.model.trigger("update");
+                //if(self.model.get('current_word')==view.word)
+                //    self.model.set('current_word', null);
             });
             view.on("delete", function(view){
                 self.model.removeWord(view.word);
@@ -60,5 +62,27 @@ define_view("ui/ResultsScreen", ["ui/WordView", "ui/QueriesView"], {
         w.view.setCurrent(true);
     },
 	events:{
-	}
+        "click #share-fb": "share_fb"
+	},
+    get_text_for_sharing: function(){
+        var words = this.model.get('words');
+        var self = this;
+        var arr = [];
+        for(var i in words){
+            var w = words[i];
+            arr.push((+i+1)+'. "'+w.word +'" - '+w.getDifferentDays()+' days, '+w.getQueries().length+' queries');
+        }
+        return "My top-10 internet searches:\n"+arr.join("\n");
+    },
+    share_fb: function(evt){
+        evt.preventDefault();
+        evt.stopPropagation();
+        var text = this.get_text_for_sharing();
+        console.log(text);
+        FB.ui({
+            method: 'share',
+            href: 'https://searchhistoryanalyzer.github.io',
+            quote: text
+        }, function(response){console.log(response);});
+    }
 });

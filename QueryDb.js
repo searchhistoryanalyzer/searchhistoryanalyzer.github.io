@@ -153,7 +153,7 @@ QueryDb = function(){
                 while(j<sorted_words.length && sorted_words[j].hidden)
                     j++;
                 assert(j<sorted_words.length);
-                var ret = sorted_words[i];
+                var ret = sorted_words[j];
                 i = j
                 return ret;
             };

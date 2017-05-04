@@ -34,9 +34,6 @@ define_view("ui/WordView", [], {
         this.trigger("open", this);
     },
     on_hide: function(){
-        this.word.hidden = true;
-        // TODO add possibility to explicitly mark hacks like this (we were generally supposed to update from model after this)
-        this.$el.hide();
         this.trigger('hide', this);
     },
     on_delete: function(){
