@@ -1,8 +1,12 @@
-define_view("ui/WelcomeScreen", [], {
+define_view("ui/WelcomeScreen", ["ui/WaitModal"], {
     model: null,            // QueryDbModel
+    wait_modal: null,
 	initialize: function(){
         // var self = this;
         // setTimeout(function(){self.debug_load_sample_data();}, 0);
+
+        this.wait_modal = new WaitModal({el: this.$('.WaitModal')});
+
         this.$('.panel').on('drag dragstart dragend dragenter', function(evt) {
           evt.preventDefault();
           evt.stopPropagation();
@@ -40,6 +44,19 @@ define_view("ui/WelcomeScreen", [], {
         if(files.length==0)
             return;
         var self = this;
+
+        var cancelled = false;          // means ignore files callbacks
+        this.wait_modal.setProgress(0);
+        this.wait_modal.on('cancel', function(){
+            cancelled = true;
+            self.wait_modal.hide();
+            self.wait_modal.off('cancel');
+        });
+        this.wait_modal.show();
+
+        // queue others  bit later:
+        setTimeout(function(){
+
         var finished_count = 0;
         for(var i=0; i<files.length; i++){
     		var file = files[i];
@@ -56,13 +73,22 @@ define_view("ui/WelcomeScreen", [], {
                     self.model.addQuery(new Query(query_text, date), {silent: true});
     			}// for
                 finished_count++;
+                self.wait_modal.setProgress(finished_count/files.length/2);
                 if(finished_count == files.length){
-                    self.model.trigger("update");
-                    self.trigger("choose");
+                    // one more trick
+                    setTimeout(function(){
+                        self.model.trigger("update");
+                        self.wait_modal.setProgress(1);
+                        self.wait_modal.hide();
+                        self.trigger("choose");
+                    }, 200);
                 }
     		};// onload
     		fr.readAsText(file);
     	}//for files
+
+        // setTimeout
+    }, 200);
     },
     debug_load_sample_data: function(){
         var event = sample_json.event;
