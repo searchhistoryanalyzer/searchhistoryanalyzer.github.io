@@ -56,7 +56,11 @@ QueryDb = function(){
     var sorted_words = [];      // i->Word
     var sorted_words_ok = true;
     var hashed_words = {};      // str->Word
-    var stopwords = {'to':1, 'of':1, 'in':1, 'for':1, 'not':1, 'the':1, 'and':1, 'on':1, 'from':1, 'is':1, 'a':1, 'or':1, 'no':1, 'an':1, 'by':1, 'with':1, 'as':1, 'at':1, 'you':1, 'set':1, 'в':1, 'на':1, 'и':1, 'для':1, 'как':1, 'по':1, 'с':1, 'из':1, 'не':1, 'от':1, 'к':1, 'что':1, 'porn': 1, 'порно':1, 'pornhub':1, 'xvideos':1, 'xrest':1, 'чкуые':1, 'ogli':1};
+    var stopwords = {'to':1, 'of':1, 'in':1, 'for':1, 'not':1, 'the':1, 'and':1, 'on':1, 'from':1, 'is':1, 'a':1, 'or':1, 'no':1, 'an':1, 'by':1, 'with':1, 'as':1, 'at':1, 'if':1,
+                     'you':1, 'set':1,
+                     'в':1, 'на':1, 'и':1, 'для':1, 'как':1, 'по':1, 'с':1, 'из':1, 'не':1, 'от':1, 'к':1, 'что':1, 'у':1,
+                     'porn': 1, 'порно':1, 'pornhub':1, 'xvideos':1, 'xrest':1, 'чкуые':1, 'ogli':1,
+                     '0':1, '1':1, '2':1, '3':1, '4':1, '5':1};
 
     var normalize_word = function(w){
         w = w.toLowerCase();
