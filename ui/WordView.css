@@ -9,7 +9,7 @@
     font-weight:bold;
 }
 
-.WordView.current *{
+.WordView.current .word, .WordView.current .metadata{
     text-decoration: underline;
 }
 

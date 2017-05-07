@@ -30,16 +30,20 @@ define_view("ui/WordView", [], {
         else
             this.$el.removeClass('current');
     },
-    on_click_word: function(){
+    on_click_word: function(evt){
+        evt.preventDefault();
         this.trigger("open", this);
     },
-    on_hide: function(){
+    on_hide: function(evt){
+        evt.preventDefault();
         this.trigger('hide', this);
     },
-    on_delete: function(){
+    on_delete: function(evt){
+        evt.preventDefault();
         this.trigger("delete", this);
     },
-    on_ignore: function(){
+    on_ignore: function(evt){
+        evt.preventDefault();
         this.trigger("ignore", this);
     }
 });
