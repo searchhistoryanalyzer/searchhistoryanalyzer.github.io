@@ -4,5 +4,10 @@
 }
 
 .panel.dragover{
-    border: 3px dashed maroon;    
+    border: 3px dashed maroon;
+}
+
+#img-checkboxes{
+    float:right;
+    border: 1px #ddd dashed;
 }
