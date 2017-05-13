@@ -26,4 +26,5 @@ button.dropdown-toggle{
 }
 .btn-group:hover .word{
     margin-right: 0px;
+    text-decoration: underline;
 }

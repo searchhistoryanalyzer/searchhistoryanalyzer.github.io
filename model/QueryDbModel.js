@@ -30,15 +30,20 @@ QueryDbModel = Backbone.Model.extend({
         update: function(){
             var words = [];
             var it = this._query_db.wordIterator();
-            var count = 0;
+            //var count = 0;
             var found_current = false;
             while(it.hasNext()){
                 var w = it.next();
+
+                if(w.getDifferentDays()<3)
+                    break;
+
                 words.push(w);
                 if(w==this.get('current_word'))
                     found_current = true;
-                if(++count>=10)
-                    break;
+
+                //if(++count>=10)
+                //    break;
             }
             this.set('words', words);
             if(!found_current)

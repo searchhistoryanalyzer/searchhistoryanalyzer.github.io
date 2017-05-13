@@ -19,7 +19,7 @@ AppModel = Backbone.Model.extend({
                 if(screen=="results"){
                     // TODO Special way to mark HACKs like this? (move it to speial place)
                     if(self.query_db_model.get('words').length==0)
-                        window.location.href = "/";
+                        window.location.href = "/#";
                     else
                             self.set('current_screen', 'ResultsScreen');
                 }

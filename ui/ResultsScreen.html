@@ -1,14 +1,15 @@
 <div class="screen ResultsScreen container">
-    <div class="row">
+    <div class="row results">
         <h1 class="text-center">Results</h1>
     </div>
     <div class="row">
         <div class="panel-col">
         <div class="panel panel-default">
-        <div class="row">
+        <div class="row" style="position: relative">
             <div class="col-xs-12 col-sm-6 col-md-4 left">
                 <ol class="word-list">
                 </ol>
+                <button type="button" class="btn btn-lg btn-link load_more">Load more...</button>
             </div>
             <div class="QueriesView right">
             </div>
@@ -18,9 +19,9 @@
     </div>
     <footer class="row">
         <div class="col-xs-12 col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
-        <div>*Click any word to see search queries</div>
+        <div class="click_message">*Click any word to see search queries</div>
         <div class="social">
-            <button type="buttom" class="btn btn-default" id="share-fb">Share</button>
+            <button type="button" class="btn btn-primary" id="share-fb">Share</button>
         </div>
         </div>
     </footer>

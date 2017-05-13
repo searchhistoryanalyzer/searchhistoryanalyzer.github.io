@@ -1,4 +1,3 @@
-/*TODO: if applying class to this root element - it won't work - fix!*/
 .ResultsScreen.container{
     max-width: 1000px;
 }
@@ -10,7 +9,42 @@
     padding-top:10px;
 }
 
+.click_message{
+    margin-bottom: 20px;
+}
+
+.ResultsScreen.open .results{
+    display: none;
+}
+
+.ResultsScreen.open .panel{
+    border: none;
+}
+
+.ResultsScreen.open .right{
+    /*position: fixed;
+    height: 100%;
+    overflow-y: scroll;*/
+}
+
+.ResultsScreen.open .click_message{
+    display: none;
+}
+
+.btn:focus{
+    outline-style: none;
+}
+
+.load_more{
+    color: lightgray;
+    padding-left: 40px;
+    padding-top: 0px;
+}
+
 .social{
-    margin-top: 20px;
     text-align: center;
+}
+
+.social button{
+    background-color: #4267b2;
 }

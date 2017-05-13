@@ -12,6 +12,7 @@ define_view("ui/WordView", [], {
 	},
 	events:{
         "click .word": "on_click_word",
+        "click #link-view-queries": "on_click_word",
         "mouseover .btn-group": function(){
             this.$('.btn-group>button').addClass('btn-default');
             this.$('.btn-group>button').removeClass('btn-link');
