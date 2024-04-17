@@ -64,14 +64,35 @@ define_view("ui/WelcomeScreen", ["ui/WaitModal"], {
     		var fr = new FileReader();
     		fr.onload = function(evt){
     			var json = JSON.parse(evt.target.result);
-    			var event = json.event;
-    			for(var i in event){
-    				var e = event[i];
-                    var date = new Date(+e.query.id[0].timestamp_usec/1000);
-                    var query_text = e.query.query_text;
-                    // TODO: remove this dependency??
-                    self.model.addQuery(new Query(query_text, date), {silent: true});
-    			}// for
+    			
+    			for(const di in json){
+
+					const dialog = json[di];
+    			
+    				for(const key in dialog.mapping){
+
+    					try{
+    					
+    						const message = dialog.mapping[key].message;
+    						
+    						if(message.author.role == "user"){
+    							const text = message.content.parts[0];
+    							const timestamp = parseInt(message.create_time);
+    							
+                    			var date = new Date(timestamp*1000);
+                    			// TODO: remove this dependency??
+                    			self.model.addQuery(new Query(text, date), {silent: true});
+                    			break;	// only 1st
+							}
+
+                    	}catch(ex){
+                    		// nothing
+                    	}
+                    	
+    				}// for
+    			
+    			}// for dialog
+    			
                 finished_count++;
                 self.wait_modal.setProgress(finished_count/files.length/2);
                 if(finished_count == files.length){
