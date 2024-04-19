@@ -7,13 +7,11 @@
     border: 3px dashed maroon;
 }
 
-#img-checkboxes{
-    float:right;
+img{
     border: 1px #ddd dashed;
-}
-
-#image-a{
-
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 a{

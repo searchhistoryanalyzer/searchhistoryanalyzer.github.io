@@ -3,16 +3,19 @@
         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2">
             <div class="panel panel-default">
             <div class="panel-body">
-                <h1 class="text-center">Input Data</h1>
-                <p>This service tries to create your <em>“mental portrait”</em> by <b>analyzing the history of your google searches</b> that have been accumulated over the years.</p>
-                <p>All data is processed <b>locally in your browser*</b>, and you <em>never share it to our servers</em>.</p>
-                <p>Also you’ll be able to <b>delete</b> any undesired words from the results of the analysis.</p>
-                    <a id="image-a" href="https://google.com/takeout" target="_blank"><img id="img-checkboxes" src="img/checkboxes.png"/></a>
-                <p><u>But first, you need to complete (a bit tricky) procedure of retrieving the input data from Google.</u></p>
-                <p><b>To obtain the data</b>, visit <a href="https://google.com/takeout" target="_blank">Google Takout</a> page, select the <b>“Search History”</b> checkbox (and unselect others), then download and unzip your archive.</p>
+                <h1 class="text-center">Data for Analysis</h1>
+                <p>Upload your <b>ChatGPT conversation history</b>* and see <em>what topics you discuss more often</em>, and how it evolves.</p>
+                <p><b>To extract your conversation history:</b>
+                <ol>
+                <li>Click on your <em>account icon</em> in the <a href="https://chat.openai.com" target="_blank">ChatGPT web app</a>, and select <em>Settings</em>.<br/><img src="img/step1.png"/></li>
+                <li>Activate <em>Data controls</em> tab.<br/><img src="img/step2.png"/></li>
+                <li>Press <em>Export</em>.<br/><img src="img/step3.png"/></li>
+                <li>Extract <code>conversations.json</code> file from the archive that you obtained.</li>
+                <ol>
+                </p>
             </div>
             <div class="panel-footer">
-                <p>To begin analysis, drag and drop desired JSON files from “Search History” folder to this window;<br/> or use the button below:</p>
+                <p><b>Drag and drop</b> <code>conversations.json</code> here;<br/> or choose it with the button below:</p>
                 <input type="file" class="choose" multiple/>
             </div>
             </div>
@@ -20,7 +23,7 @@
     </div>
     <footer class="row">
         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2">
-        *You can safely disconnect the Internet right now, and continue analysis fully offline
+        *Analysis is carried out in your browser, fully offline, you can disconnect from the Internet right now
     </footer>
     <!-- invivible -->
     <div class="WaitModal"></div>
